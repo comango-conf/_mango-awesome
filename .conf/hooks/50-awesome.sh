@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# HOOKS INTO reload
+#HOOKS INTO reload
 
-echo "awesome.restart()" | awesome-client
+awesome-client 'awesome.restart()'
