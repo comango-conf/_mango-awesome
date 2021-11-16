@@ -1,0 +1,9 @@
+{
+  "Lua.diagnostics.globals": [
+    "awesome",
+    "client",
+    "screen",
+    "root"
+  ],
+  "editor.tabSize": 4
+}
