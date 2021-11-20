@@ -147,6 +147,8 @@ awful.rules.rules = {
 
     { rule_any = {
             class = {
+                "Vivaldi",
+                "Firefox",
                 "Microsoft-edge",
                 "Microsoft-edge-dev",
                 "Microsoft-edge-beta",
