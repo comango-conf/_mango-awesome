@@ -17,7 +17,7 @@ local myawesomemenu = {
     { "restart", awesome.restart },
     { "quit", function() awesome.quit() end },
 }
- 
+
 local mymainmenu = awful.menu({
     items = {
         { "awesome", myawesomemenu, beautiful.awesome_icon },
@@ -83,7 +83,7 @@ function keybinds.set()
                 if tag then
                     client.focus:move_to_tag(tag)
                 end
-            end 
+            end
         end,
                 {description = "move client to screen 1", group = "screen"}),
         awful.key({ MODKEY, "Shift"   }, "e", function ()
@@ -92,7 +92,7 @@ function keybinds.set()
                 if tag then
                     client.focus:move_to_tag(tag)
                 end
-            end 
+            end
         end,
                 {description = "move client to screen 2", group = "screen"}),
         awful.key({ MODKEY,           }, "u", awful.client.urgent.jumpto,
@@ -175,9 +175,9 @@ function keybinds.set()
 
 
         -- Media
-        awful.key({}, "XF86MonBrightnessUp"  , function() awful.spawn.with_shell("set-backlight 5") end,
+        awful.key({}, "XF86MonBrightnessUp"  , function() awful.spawn.with_shell("light -A 10") end,
                 {description = "increase monitor brightness", group = "Media"}),
-        awful.key({}, "XF86MonBrightnessDown", function() awful.spawn.with_shell("set-backlight -5") end,
+        awful.key({}, "XF86MonBrightnessDown", function() awful.spawn.with_shell("light -U 10") end,
                 {description = "decrease monitor brightness", group = "Media"}),
         awful.key({}, "XF86AudioRaiseVolume" , function() awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ +5%") end,
                 {description = "increase speaker volume", group = "Media"}),
