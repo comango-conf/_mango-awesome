@@ -39,8 +39,8 @@ function keybinds.set()
 
     -- {{{ Key bindings
     local globalkeys = gears.table.join(
-        awful.key({ MODKEY, "Shift"   }, "s",      hotkeys_popup.show_help,
-                  {description="show help", group="awesome"}),
+        -- awful.key({ MODKEY, "Shift"   }, "s",      hotkeys_popup.show_help,
+        --           {description="show help", group="awesome"}),
         awful.key({ MODKEY,           }, "Left",
             function ()
                 awful.tag.viewprev()
@@ -194,6 +194,8 @@ function keybinds.set()
         awful.key({ "Shift" }, "Print"       , function() awful.spawn.with_shell("import png:/tmp/snip.png") end,
                 {description = "selection screenshot to tmp", group = "Media"}),
         awful.key({         }, "Print"       , function() awful.spawn.with_shell("import png:- | xclip -selection c -t image/png -i") end,
+                {description = "selection screenshot to clipboard", group = "Media"}),
+        awful.key({ MODKEY, "Shift" }, "s"   , function() awful.spawn.with_shell("import png:- | xclip -selection c -t image/png -i") end,
                 {description = "selection screenshot to clipboard", group = "Media"}),
 
 
