@@ -1,11 +1,13 @@
 local awful = require("awful")
 local naughty = require("naughty")
-local minmax  = require("minmax")
+local minmax = require("layouts.minmax")
+local accordion = require("layouts.accordion");
 
 
 awful.layout.layouts = {
     awful.layout.suit.tile,
     minmax,
+    accordion,
 }
 
 local tags = {}

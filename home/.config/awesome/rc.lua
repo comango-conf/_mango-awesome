@@ -21,7 +21,6 @@ require("awful.hotkeys_popup.keys")
 local tags = require("tags")
 local dock = require("dock")
 local keybinds = require("keybinds")
-local minmax = require("minmax")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
