@@ -265,6 +265,13 @@ awful.rules.rules = {
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)
 
+
+    c:connect_signal("property::class", function(c) 
+        if c.class == "Spotify" then
+            c:move_to_tag("music")
+        end
+    end)
+
     c.shape = function(cr,w,h) gears.shape.rounded_rect(cr,w,h,5) end
      -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
@@ -326,9 +333,3 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
-
-client.connect_signal("property::class", function(c) 
-        if c.class == "spotify" then
-            c:move_to_tag("music")
-        end
-end)
