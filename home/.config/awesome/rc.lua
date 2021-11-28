@@ -154,7 +154,8 @@ awful.rules.rules = {
             }
         },
         properties = {
-            maximized = false
+            maximized = false,
+            opacity = 1,
         }
     },
 
