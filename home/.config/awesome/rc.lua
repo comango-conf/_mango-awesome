@@ -328,7 +328,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 client.connect_signal("property::class", function(c) 
-        if c.class == "Spotify" then
+        if c.class == "spotify" then
             c:move_to_tag("music")
         end
 end)
