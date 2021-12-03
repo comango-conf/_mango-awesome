@@ -65,8 +65,6 @@ function keybinds.set()
             end,
             {description = "focus previous by index", group = "client"}
         ),
-        awful.key({ MODKEY,           }, "w", function () mymainmenu:show() end,
-                {description = "show main menu", group = "awesome"}),
 
         -- Layout manipulation
         awful.key({ MODKEY, "Shift"   }, "d", function () awful.client.swap.byidx(  1) end,
@@ -268,14 +266,6 @@ function keybinds.clientkeys ()
             {description = "toggle fullscreen", group = "client"}),
         awful.key({ MODKEY, "Shift"   }, "c",      function (c) c:kill()                         end,
                 {description = "close", group = "client"}),
-        awful.key({ MODKEY, "Control" }, "space",  awful.client.floating.toggle                     ,
-                {description = "toggle floating", group = "client"}),
-        awful.key({ MODKEY, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
-                {description = "move to master", group = "client"}),
-        awful.key({ MODKEY,           }, "o",      function (c) c:move_to_screen()               end,
-                {description = "move to screen", group = "client"}),
-        awful.key({ MODKEY,           }, "t",      function (c) c.ontop = not c.ontop            end,
-                {description = "toggle keep on top", group = "client"}),
         awful.key({ MODKEY,           }, "n",
             function (c)
                 -- The client currently has the input focus, so it cannot be
@@ -300,7 +290,9 @@ function keybinds.clientkeys ()
                 c.maximized_horizontal = not c.maximized_horizontal
                 c:raise()
             end ,
-            {description = "(un)maximize horizontally", group = "client"})
+            {description = "(un)maximize horizontally", group = "client"}),
+        awful.key({ MODKEY, "Shift"}, "u", function (c) c.bg_opaque = not c.bg_opaque end,
+            {description = "toggle client unfocused opacity", group = "client"})
     )
 end
 

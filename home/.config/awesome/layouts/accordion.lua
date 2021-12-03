@@ -1,6 +1,5 @@
 local naughty = require("naughty")
 local awful = require("awful")
-local show = require("wslua.show")
 
 local accordion = {
     name = "accordion",
@@ -19,13 +18,13 @@ function accordion.arrange (p)
     end
 
     if #p.clients == 1 then
-        geometries[clients[1]] = {
+        p.geometries[clients[1]] = {
             x      = area.x,
             y      = area.y,
             width  = area.width,
             height = area.height
         }
-       return 
+        return
     end
 
     local sel
@@ -65,7 +64,7 @@ function accordion.arrange (p)
         c = clients[i]
     end
 
-    naughty.notify { text = show(order) }
+    -- naughty.notify { text = show(order) }
 
     for _, c in pairs(p.clients) do
         if order[c] == 1 then

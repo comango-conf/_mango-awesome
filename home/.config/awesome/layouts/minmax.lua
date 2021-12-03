@@ -39,33 +39,31 @@ local function fmax(p, fs)
     end
 
     if nofocus then
-        local g = {
+        p.geometries[p.clients[1]] = {
             x = area.x,
             y = area.y,
             width = area.width,
             height = area.height
         }
-        p.geometries[p.clients[1]] = g
         return
     end
 
     for _, c in pairs(p.clients) do
         if c == client.focus then
-            local g = {
+            p.geometries[c] = {
                 x = area.x,
                 y = area.y,
                 width = area.width,
                 height = area.height
             }
-            p.geometries[c] = g
+
         else
-            local g = {
+            p.geometries[c] = {
                 x = area.x,
                 y = area.y + area.height,
                 width = area.width,
                 height = area.height
             }
-            p.geometries[c] = g
         end
     end
 end
