@@ -7,7 +7,7 @@ local accordion = require("layouts.accordion");
 awful.layout.layouts = {
     awful.layout.suit.tile,
     minmax,
-    accordion,
+    -- accordion,
 }
 
 local tags = {}

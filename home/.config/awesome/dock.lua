@@ -136,7 +136,7 @@ function dock.create(s)
         buttons = tasklist_buttons,
         style    = {
             border_width = 1,
-            border_color = "#777777",
+            border_color = "#77777700",
             shape        = gears.shape.rounded_bar,
         },
         widget_template = {
@@ -187,13 +187,13 @@ function dock.create(s)
         },
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            {
-                layout = wibox.container.margin,
-                top = 2,
-                bottom = 2,
-                right = 2,
-                wibox.widget.systray(),
-            },
+            -- {
+            --     layout = wibox.container.margin,
+            --     top = 2,
+            --     bottom = 2,
+            --     right = 2,
+            --     wibox.widget.systray(),
+            -- },
             wifidisplay,
             {
                 layout = wibox.container.margin,

@@ -33,6 +33,8 @@ theme.border_marked = "#91231c"
 
 theme.radialprogressbar_border_color = "#0000"
 theme.radialprogressbar_color = theme.border_focus
+theme.progressbar_fg = theme.fg_normal
+theme.progressbar_bg = "#0000"
 
 -- There are other variable sets
 -- overriding the default one when
@@ -104,7 +106,7 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = "/home/hannah/.wallpapers/girl-sunfall-silhouette.jpg"
+theme.wallpaper = "<#{WALLPAPER}#>"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairhw.png"
