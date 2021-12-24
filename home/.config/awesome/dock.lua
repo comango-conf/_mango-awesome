@@ -165,7 +165,8 @@ function dock.create(s)
     s.mywibox = awful.wibar({
         position = "top",
         ontop = false,
-        screen = s
+        screen = s,
+        height = 30,
     })
 
     -- Add widgets to the wibox
