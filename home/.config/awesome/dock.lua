@@ -201,8 +201,8 @@ function dock.create(s)
             {
                 layout = wibox.layout.flex.horizontal,
                 spacing = 0,
-                max_widget_size = 25,
-                forced_width = 100,
+                max_widget_size = 30,
+                forced_width = 80,
                 wifidisplay,
                 volume_widget,
                 battery_indicator,
