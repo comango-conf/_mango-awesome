@@ -166,7 +166,7 @@ function dock.create(s)
         position = "top",
         ontop = false,
         screen = s,
-        height = 35,
+        height = 30,
     })
 
     -- Add widgets to the wibox
