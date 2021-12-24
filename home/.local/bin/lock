@@ -25,17 +25,17 @@ i3lock-color \
   --time-font="$font" \
   --time-size=72 \
   --time-color=$color \
+  --time-pos="x+180:y+h-80" \
   --date-color=$color \
   --date-str="%A, %d %B" \
   --date-color=$color \
   --date-font="$font" \
   --date-size=18 \
-  --verif-font="$font" \
-  --verif-size=24 \
+  --{verif,wrong}-font="$font" \
+  --{verif,wrong}-size=24 \
+  --{verif,wrong}-color=$color \
+  --{verif,wrong}-pos="x+w/2:y+h-80" \
+  --{verif,wrong}-align=0 \
   --verif-text="$greet" \
-  --verif-color=$color\
-  --wrong-font="$font" \
-  --wrong-size=24 \
   --wrong-text="$wrong_pass" \
-  --wrong-color=$color \
   -L -i $background

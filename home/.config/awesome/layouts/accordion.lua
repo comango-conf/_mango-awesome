@@ -17,7 +17,7 @@ function accordion.arrange (p)
         return
     end
 
-    if #p.clients == 1 then
+    if #clients == 1 then
         p.geometries[clients[1]] = {
             x      = area.x,
             y      = area.y,

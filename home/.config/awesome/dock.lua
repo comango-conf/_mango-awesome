@@ -162,12 +162,16 @@ function dock.create(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s })
+    s.mywibox = awful.wibar({
+        position = "top",
+        ontop = false,
+        screen = s
+    })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
-        fill_space = false,
+        expand = "none",
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             {
@@ -194,19 +198,16 @@ function dock.create(s)
             --     right = 2,
             --     wibox.widget.systray(),
             -- },
-            wifidisplay,
             {
-                layout = wibox.container.margin,
-                right = 3,
+                layout = wibox.layout.flex.horizontal,
+                spacing = 0,
+                max_widget_size = 25,
+                forced_width = 100,
+                wifidisplay,
                 volume_widget,
-            },
-            {
-                layout = wibox.container.margin,
-                left = 3,
-                right = 3,
                 battery_indicator,
+                -- mykeyboardlayout,
             },
-            -- mykeyboardlayout,
             mytextclock,
             s.mylayoutbox,
         }

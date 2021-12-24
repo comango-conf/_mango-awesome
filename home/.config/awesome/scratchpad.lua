@@ -15,7 +15,7 @@ scratchpads.audio = {
 }
 scratchpads.passwords = {
     class = "Bitwarden",
-    cmd = "bitwarden"
+    cmd = "bitwarden-desktop"
 }
 
 function scratchpad.toggle(name)

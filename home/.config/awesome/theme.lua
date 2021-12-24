@@ -36,6 +36,10 @@ theme.radialprogressbar_color = theme.border_focus
 theme.progressbar_fg = theme.fg_normal
 theme.progressbar_bg = "#0000"
 
+theme.tasklist_bg_normal = "#0000"
+theme.tasklist_bg_focus  = "#181a2099"
+theme.taglist_bg_focus   = "#181a2099"
+
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
