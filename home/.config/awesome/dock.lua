@@ -203,7 +203,7 @@ function dock.create(s)
                 layout = wibox.layout.flex.horizontal,
                 spacing = 0,
                 max_widget_size = 30,
-                forced_width = 85,
+                forced_width = 65,
                 wifidisplay,
                 volume_widget,
                 -- mykeyboardlayout,
