@@ -206,9 +206,9 @@ function dock.create(s)
                 forced_width = 85,
                 wifidisplay,
                 volume_widget,
-                battery_indicator,
                 -- mykeyboardlayout,
             },
+            battery_indicator,
             mytextclock,
             s.mylayoutbox,
         }
