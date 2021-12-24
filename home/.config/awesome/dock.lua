@@ -64,7 +64,7 @@ local wifidisplay = awful.widget.watch('iw ' .. WIFIDEVICE .. ' link', 5,
                 return
             end
 
-            ssid =   stdout:match "SSID: [%w%s]*%c":sub(6, -2)
+            ssid =   stdout:match "SSID: [%w%s%p]*%c":sub(6, -2)
             local signal = tonumber(stdout:match "signal: %p%d*":sub(8, -1))
 
             local icon = ""
@@ -72,7 +72,7 @@ local wifidisplay = awful.widget.watch('iw ' .. WIFIDEVICE .. ' link', 5,
                 icon = ""
             elseif signal >= -70 then
                 icon = ""
-            else 
+            else
                 icon = ""
             end
             widget:set_text(icon .. ' ')
