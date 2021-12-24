@@ -54,7 +54,7 @@ local watch = awful.widget.watch(
         {
             layout = wibox.container.margin,
             right = 1,
-            bottom = 1,
+            bottom = 0,
             {
                 id = "text",
                 widget = wibox.widget.textbox,
