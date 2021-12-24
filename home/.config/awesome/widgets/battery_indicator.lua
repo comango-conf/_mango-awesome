@@ -47,7 +47,7 @@ local watch = awful.widget.watch(
                 min_value = 0,
                 max_value = 100,
                 value = 70,
-                forced_width = 11,
+                forced_width = 10,
                 forced_height = 15,
             }
         },
