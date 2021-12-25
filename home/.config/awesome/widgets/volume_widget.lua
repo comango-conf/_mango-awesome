@@ -16,6 +16,15 @@ local tooltip = awful.tooltip {
     objects = { text },
 }
 
+awful.spawn.with_line_callback(
+    "/home/hannah/.local/bin/volume-notify.sh",
+    {
+        stdout = function (out)
+            awesome.emit_signal("volume::change", out)
+        end,
+    }
+)
+
 
 local volume = ""
 local volume_widget = awful.widget.watch("pamixer --get-volume-human", 0.2,
@@ -96,19 +105,22 @@ local timer = gears.timer({
 text:connect_signal("button::press",
         function (_, _, _, button)
 
-               if button == 1 then
-                -- scratchpad.toggle("audio")
+            if button == 1 then
+                scratchpad.toggle("audio")
             elseif button == 4 then
                 awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ +5%")
             elseif button == 5 then
                 awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%")
             end
-            
-            pop.widget = wibox.widget(popup_widget_template(volume))
-            pop.visible = true
-            timer:again()
         end
 )
+
+awesome.connect_signal("volume::change", function (vol)
+    volume = vol
+    pop.widget = wibox.widget(popup_widget_template(tonumber(vol)))
+    pop.visible = true
+    timer:again()
+end)
 
 
 
