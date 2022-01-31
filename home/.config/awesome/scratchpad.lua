@@ -80,15 +80,15 @@ function scratchpad.toggle(name)
         end
     end
 
-    -- if focused screen as no tag selected, spawn one
+    -- if focused screen has no tag selected, spawn one
     if not curr_tag then
         curr_tag = tags.add_temp(awful.screen.focused(), true)
     end
 
-    local rules = { table.unpack(scratch.rules) };
-    rules[tags] = { curr_tag };
+    -- local rules = scratch.rules;
+    -- rules[tags] = { curr_tag };
 
-    awful.spawn(scratch.cmd, rules)
+    awful.spawn(scratch.cmd, { tags = { curr_tag }})
 end
 
 function scratchpad.rules()

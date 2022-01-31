@@ -3,6 +3,7 @@
 pcall(require, "luarocks.loader")
 
 require("variables")
+require("volume_signal")
 
 -- Standard awesome library
 local gears = require("gears")
