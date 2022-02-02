@@ -180,6 +180,13 @@ awful.rules.rules = {
     },
     { rule_any = {
             class = {
+                "Steam"
+            }
+        },
+        properties = { tag = "misc" }
+    },
+    { rule_any = {
+            class = {
                 "Spotify"
             }
         },
@@ -210,6 +217,21 @@ awful.rules.rules = {
             }
         },
         properties = { tag = "zoom" }
+    },
+
+    -- games 
+    { rule_any = {
+            name = {
+                "Warframe"
+            }
+        },
+        properties = {
+            floating = true,
+            tag = "misc",
+            fullscreen = true,
+            placement = awful.placement.centered,
+            shape = nil,
+        }
     },
 
     -- scratchpads
@@ -274,7 +296,18 @@ client.connect_signal("manage", function (c)
         end
     end)
 
-    c.shape = function(cr,w,h) gears.shape.rounded_rect(cr,w,h,5) end
+    if not c.fullscreen then
+        c.shape = function(cr,w,h) gears.shape.rounded_rect(cr,w,h,5) end
+    end
+
+    c:connect_signal("property::fullscreen", function(c)
+        if c.fullscreen then
+            c.shape = nil
+        else
+            c.shape = function(cr,w,h) gears.shape.rounded_rect(cr,w,h,5) end
+        end
+    end)
+
      -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
     -- if not awesome.startup then awful.client.setslave(c) end

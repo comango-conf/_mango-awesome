@@ -3,7 +3,7 @@ local gears = require("gears")
 local wibox = require("wibox")
 local tags = require("tags")
 
-local battery_indicator = require("widgets.battery_indicator")
+local battery_indicator = ENABLE_BATTERY and require("widgets.battery_indicator")
 local volume_widget = require("widgets.volume_widget")
 
 local dock = {}
@@ -57,7 +57,7 @@ local tasklist_buttons = gears.table.join(
 
 local ssid = ''
 
-local wifidisplay = awful.widget.watch('iw ' .. WIFIDEVICE .. ' link', 5,
+local wifidisplay = awful.widget.watch('iw ' .. WIFI_DEVICE .. ' link', 5,
         function(widget, stdout)
             if stdout:match ".*Not connected.*" then
                 widget:set_text("")
@@ -208,7 +208,7 @@ function dock.create(s)
                 volume_widget,
                 -- mykeyboardlayout,
             },
-            battery_indicator,
+            ENABLE_BATTERY and battery_indicator or nil,
             mytextclock,
             s.mylayoutbox,
         }

@@ -17,4 +17,8 @@ naughty.config.defaults.position = "top_middle"
 naughty.config.defaults.shape = function(cr,w,h) gears.shape.rounded_rect(cr,w,h,5) end
 
 
-WIFIDEVICE = "wlp2s0"
+
+ENABLE_WIFI = "<#{ENABLE_WIFI}#>" == "true"
+WIFI_DEVICE = "<#{WLAN_INTERFACE}#>"
+
+ENABLE_BATTERY = "<#{ENABLE_BATTERY}#>" == "true"
