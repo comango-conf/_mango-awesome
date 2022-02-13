@@ -68,7 +68,7 @@ local function popup_widget_template (audio)
                 },
                 {
                     widget = wibox.widget.textbox,
-                    text   = audio and audio.sink or "Nothing",
+                    text   = audio and audio.sink:sub(1, 20) or "Nothing",
                     align  = "center",
                     font   = "Noto Sans 24"
                 },
