@@ -30,11 +30,7 @@ local watch = awful.widget.watch(
         -- widget:set_text(icon .. " " .. cap .. "%")
 
         widget:get_children_by_id("progressbar")[1].value = tonumber(cap)
-        if status == '1' then
-            widget:get_children_by_id("text")[1]:set_text("")
-        else
-            widget:get_children_by_id("text")[1]:set_text(text)
-        end
+        widget:get_children_by_id("text")[1]:set_text(status == "1" and "" or text)
     end,
     wibox.widget
     {
