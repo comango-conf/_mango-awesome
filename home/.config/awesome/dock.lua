@@ -134,7 +134,7 @@ function dock.create(s)
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
         buttons = tasklist_buttons,
-        style    = {
+        style   = {
             border_width = 1,
             border_color = "#77777700",
             shape        = gears.shape.rounded_bar,
@@ -144,14 +144,14 @@ function dock.create(s)
             widget = wibox.container.background,
             {
                 widget = wibox.container.margin,
-                left = 10,
-                right = 10,
-                top = 2,
-                bottom = 2,
+                left   = 10,
+                right  = 10,
+                top    =  2,
+                bottom =  2,
                 {
-                    id     = 'clienticon',
+                    id = 'clienticon',
                     widget = awful.widget.clienticon,
-                    forced_width = 18,
+                    forced_width  = 18,
                     forced_height = 20,
                 },
             },
@@ -164,9 +164,9 @@ function dock.create(s)
     -- Create the wibox
     s.mywibox = awful.wibar({
         position = "top",
-        ontop = false,
-        screen = s,
-        height = 25,
+        ontop    = false,
+        screen   = s,
+        height   = 25,
     })
 
     -- Add widgets to the wibox
