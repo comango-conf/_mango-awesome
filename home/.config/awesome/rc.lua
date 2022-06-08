@@ -373,7 +373,7 @@ client.connect_signal("unfocus", function(c)
     c.border_color = beautiful.border_normal
 
     if not c.bg_opaque then
-        c.opacity = 0.7
+        c.opacity = BACKGROUND_OPACITY
     end
 end)
 -- }}}

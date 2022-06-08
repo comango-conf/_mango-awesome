@@ -11,7 +11,7 @@ i3lock-color \
   --ignore-empty-password \
   --indicator \
   --bar-indicator \
-  --bar-pos="1070" \
+  --bar-pos="x:y+h-10" \
   --bar-base-width="10" \
   --bar-orientation=horizontal \
   --bar-color="151515" \
