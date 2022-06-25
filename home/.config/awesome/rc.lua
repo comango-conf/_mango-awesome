@@ -173,7 +173,9 @@ awful.rules.rules = {
     },
     { rule_any = {
             class = {
-                "Code"
+                "Code",
+                "jetbrains-webstorm",
+                "jetbrains-idea"
             }
         },
         properties = { tag = "code" }
