@@ -1,3 +1,6 @@
+local misc = require("wslua.misc")
+local naughty = require("naughty")
+
 ---------------------------------------------------------------------------
 --- Maximized and fullscreen layouts module for awful
 --
@@ -22,6 +25,7 @@ local max = {}
 -- @see gears.surface
 
 local function fmax(p, fs)
+
     -- Fullscreen?
     local area
     if fs then
@@ -38,13 +42,14 @@ local function fmax(p, fs)
         end
     end
 
-    if nofocus then
+    if nofocus and p.clients[1] ~= nil then
         p.geometries[p.clients[1]] = {
             x = area.x,
             y = area.y,
             width = area.width,
             height = area.height
         }
+        -- p.clients[1].opacity = 1
         return
     end
 

@@ -3,7 +3,9 @@
     "awesome",
     "client",
     "screen",
-    "root"
+    "root",
+    "mouse",
+    "mousegrabber"
   ],
-  "editor.tabSize": 4
+  "editor.tabSize": 4,
 }

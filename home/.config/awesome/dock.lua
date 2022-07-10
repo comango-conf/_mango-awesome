@@ -106,7 +106,7 @@ function dock.create(s)
                 and awful.widget.taglist.filter.noempty(t)
         end,
         buttons         = taglist_buttons,
-        source          = function() tags:source() end,
+        -- source          = tags.source,
         widget_template = {
             {
                 {

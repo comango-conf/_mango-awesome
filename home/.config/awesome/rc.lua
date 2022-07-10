@@ -1,4 +1,4 @@
-package.path = package.path .. os.getenv("HOME") .. "/.local/share/lua/?.lua;" .. os.getenv("HOME") ..
+package.path = package.path .. ";" .. os.getenv("HOME") .. "/.local/share/lua/?.lua;" .. os.getenv("HOME") ..
     "/.local/share/lua/?/init.lua"
 
 
@@ -115,6 +115,7 @@ awful.rules.rules = {
             buttons = keybinds.clientbuttons(),
             screen = awful.screen.preferred,
             placement = awful.placement.no_overlap + awful.placement.no_offscreen,
+            size_hints_honor = false,
         }
     },
 
@@ -303,14 +304,14 @@ client.connect_signal("manage", function(c)
     end)
 
     if not c.fullscreen then
-        c.shape = function(cr, w, h) gears.shape.rounded_rect(cr, w, h, 5) end
+        c.shape = function(cr, w, h) gears.shape.octogon(cr, w, h, 5) end
     end
 
     c:connect_signal("property::fullscreen", function(c)
         if c.fullscreen then
             c.shape = nil
         else
-            c.shape = function(cr, w, h) gears.shape.rounded_rect(cr, w, h, 5) end
+            c.shape = function(cr, w, h) gears.shape.octogon(cr, w, h, 5) end
         end
     end)
 

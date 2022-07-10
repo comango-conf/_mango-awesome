@@ -1,5 +1,6 @@
 local naughty = require("naughty")
 local awful = require("awful")
+local misc = require("wslua.misc")
 
 local accordion = {
     name = "accordion",
@@ -9,6 +10,9 @@ local state = {}
 
 
 function accordion.arrange (p)
+    misc.print(p.clients[1].opacity)
+    -- p.clients[1].opacity = 0
+
     local area = p.workarea
 
     local clients = p.clients
@@ -74,6 +78,7 @@ function accordion.arrange (p)
                     width  = area.width / 2,
                     height = area.height,
                 }
+                -- c.opacity = 1
         elseif order[c] == 2 then
             p.geometries[c] = {
                 x      = area.x + area.width / 2,
@@ -81,6 +86,7 @@ function accordion.arrange (p)
                 width  = area.width / 2,
                 height = area.height,
             }
+            -- c.opacity = BACKGROUND_OPACITY
         else 
             p.geometries[c] = {
                 x = area.x,
@@ -88,6 +94,7 @@ function accordion.arrange (p)
                 width = area.width,
                 height = area.height
             }
+            -- c.opacity = 0
         end
     end
 

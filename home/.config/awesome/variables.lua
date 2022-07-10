@@ -14,7 +14,7 @@ MODKEY = "Mod4"
 beautiful.init("/home/hannah/.config/awesome/theme.lua")
 
 naughty.config.defaults.position = "top_middle"
-naughty.config.defaults.shape = function(cr,w,h) gears.shape.rounded_rect(cr,w,h,5) end
+naughty.config.defaults.shape = function(cr,w,h) gears.shape.octogon(cr,w,h,5) end
 
 
 

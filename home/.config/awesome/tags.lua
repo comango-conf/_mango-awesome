@@ -1,14 +1,14 @@
 local awful = require("awful")
 local naughty = require("naughty")
-local minmax = require("layouts.minmax")
-local accordion = require("layouts.accordion")
+local layouts = require("layouts")
 local misc = require("wslua.misc")
+local util = require("util")
 
 
 awful.layout.append_default_layouts({
-    awful.layout.suit.tile,
-    minmax,
-    accordion,
+    layouts.tile,
+    layouts.minmax,
+    layouts.accordion,
 })
 
 local tags = {}
@@ -134,13 +134,8 @@ function tags.add_temp(s, selected)
 end
 
 function tags.source()
-    local ret = {}
-
-    for _, tag in ipairs(taglist) do
-        ret.append(tag.instance)
-    end
-
-    return ret;
+    table.sort(taglist, function(a, b) return a.index < b.index end)
+    return util.map(function(t) return t.instance end, taglist);
 end
 
 return tags
