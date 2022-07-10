@@ -1,5 +1,5 @@
-package.path(";;" .. os.getenv("HOME") .. "/.local/share/lua/?.lua;" .. os.getenv("HOME") ..
-    "/.local/share/lua/?/init.lua")
+package.path = package.path .. os.getenv("HOME") .. "/.local/share/lua/?.lua;" .. os.getenv("HOME") ..
+    "/.local/share/lua/?/init.lua"
 
 
 -- If LuaRocks is installed, make sure that packages installed through it are
