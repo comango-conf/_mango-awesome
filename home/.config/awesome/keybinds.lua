@@ -75,7 +75,7 @@ function keybinds.set()
                 {description = "focus the next screen", group = "screen"}),
         awful.key({ MODKEY,           }, "e", function () awful.screen.focus(1) end,
                 {description = "focus the previous screen", group = "screen"}),
-        awful.key({ MODKEY, "Shift"   }, "q", function ()
+        awful.key({ MODKEY, "Shift"   }, "e", function ()
             if client.focus then
                 local tag = screen[1].selected_tag
                 if tag then
@@ -84,7 +84,7 @@ function keybinds.set()
             end
         end,
                 {description = "move client to screen 1", group = "screen"}),
-        awful.key({ MODKEY, "Shift"   }, "e", function ()
+        awful.key({ MODKEY, "Shift"   }, "q", function ()
             if client.focus then
                 local tag = screen[2].selected_tag
                 if tag then

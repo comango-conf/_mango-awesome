@@ -1,14 +1,15 @@
 local awful = require("awful")
 local naughty = require("naughty")
 local minmax = require("layouts.minmax")
-local accordion = require("layouts.accordion");
+local accordion = require("layouts.accordion")
+local misc = require("wslua.misc")
 
 
-awful.layout.layouts = {
+awful.layout.append_default_layouts({
     awful.layout.suit.tile,
     minmax,
     accordion,
-}
+})
 
 local tags = {}
 
@@ -42,16 +43,15 @@ local function default_tag(name, s, icon, selected)
     i = i + 1
 end
 
-
 function tags.create(s)
-    default_tag("www"  , s, "", true)
-    default_tag("code" , s, "")
-    default_tag("term" , s, "")
-    default_tag("misc" , s, "")
+    default_tag("www", s, "", true)
+    default_tag("code", s, "")
+    default_tag("term", s, "")
+    default_tag("misc", s, "")
     default_tag("music", s, "")
-    default_tag("chat" , s, "")
-    default_tag("mail" , s, "")
-    default_tag("zoom" , s, "")
+    default_tag("chat", s, "")
+    default_tag("mail", s, "")
+    default_tag("zoom", s, "")
     -- default_tag("scratchpads", s)
 
     local scrpd = awful.tag.add("scratchpads", {
@@ -65,9 +65,13 @@ function tags.create(s)
         activated          = true,
     })
 
-    scrpd:connect_signal("property::selected", function (self)
+    scrpd:connect_signal("property::selected", function(self)
         self.selected = false
     end)
+
+
+    misc.print(taglist)
+    misc.print(awful.widget.taglist.source.for_screen(s))
 end
 
 function tags.toggle(index)
@@ -119,7 +123,7 @@ function tags.add_temp(s, selected)
         volatile           = true
     })
 
-    t:connect_signal("untagged", function ()
+    t:connect_signal("untagged", function()
         -- if next(t:clients()) == nil then
         --     local screen = t.screen
         --     -- t:delete(nil)
@@ -127,6 +131,16 @@ function tags.add_temp(s, selected)
         -- end
     end)
     return t
+end
+
+function tags.source()
+    local ret = {}
+
+    for _, tag in ipairs(taglist) do
+        ret.append(tag.instance)
+    end
+
+    return ret;
 end
 
 return tags

@@ -72,10 +72,12 @@ function scratchpad.toggle(name)
 
             -- else move pad to current tag
             c:move_to_tag(curr_tag)
-            client.focus = c
-            -- c:activate {
-            --     switch_to_tag = true
-            -- }
+            -- client.focus = c
+            c:activate {
+                switch_to_tag = false,
+                raise         = true,
+            }
+            scratch.rules.placement(c, { honor_workarea = true })
             return
         end
     end
@@ -88,7 +90,7 @@ function scratchpad.toggle(name)
     -- local rules = scratch.rules;
     -- rules[tags] = { curr_tag };
 
-    awful.spawn(scratch.cmd, { tags = { curr_tag }})
+    awful.spawn(scratch.cmd, { tags = { curr_tag } })
 end
 
 function scratchpad.rules()
@@ -99,7 +101,7 @@ function scratchpad.rules()
             { rule_any = {
                 class = { scratch.class }
             },
-            properties = scratch.rules,
+                properties = scratch.rules,
             }
         )
     end

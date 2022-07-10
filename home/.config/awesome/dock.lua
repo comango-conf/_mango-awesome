@@ -15,68 +15,68 @@ local mytextclock = wibox.widget.textclock()
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
-        awful.button({}, 1, function(t) t:view_only() end),
-        awful.button({ MODKEY }, 1, function(t)
-                                        if client.focus then
-                                            client.focus:move_to_tag(t)
-                                        end
-                                    end),
-        awful.button({}, 3, awful.tag.viewtoggle),
-        awful.button({ MODKEY }, 3, function(t)
-                                        if client.focus then
-                                            client.focus:toggle_tag(t)
-                                        end
-                                    end),
-        awful.button({}, 4, function(t) awful.tag.viewnext(t.screen) end),
-        awful.button({}, 5, function(t) awful.tag.viewprev(t.screen) end)
+    awful.button({}, 1, function(t) t:view_only() end),
+    awful.button({ MODKEY }, 1, function(t)
+        if client.focus then
+            client.focus:move_to_tag(t)
+        end
+    end),
+    awful.button({}, 3, awful.tag.viewtoggle),
+    awful.button({ MODKEY }, 3, function(t)
+        if client.focus then
+            client.focus:toggle_tag(t)
+        end
+    end),
+    awful.button({}, 4, function(t) awful.tag.viewnext(t.screen) end),
+    awful.button({}, 5, function(t) awful.tag.viewprev(t.screen) end)
 )
 
 local tasklist_buttons = gears.table.join(
-        awful.button({}, 1, function (c)
-                                if c == client.focus then
-                                    c.minimized = true
-                                else
-                                    c:emit_signal(
-                                        "request::activate",
-                                        "tasklist",
-                                        {raise = true}
-                                    )
-                                end
-                            end),
-        awful.button({}, 3, function()
-                                awful.menu.client_list({ theme = { width = 250 } })
-                            end),
-        awful.button({}, 4, function ()
-                                awful.client.focus.byidx(1)
-                            end),
-        awful.button({}, 5, function ()
-                                awful.client.focus.byidx(-1)
-                            end)
+    awful.button({}, 1, function(c)
+        if c == client.focus then
+            c.minimized = true
+        else
+            c:emit_signal(
+                "request::activate",
+                "tasklist",
+                { raise = true }
+            )
+        end
+    end),
+    awful.button({}, 3, function()
+        awful.menu.client_list({ theme = { width = 250 } })
+    end),
+    awful.button({}, 4, function()
+        awful.client.focus.byidx(1)
+    end),
+    awful.button({}, 5, function()
+        awful.client.focus.byidx(-1)
+    end)
 )
 
 
 local ssid = ''
 
 local wifidisplay = awful.widget.watch('iw ' .. WIFI_DEVICE .. ' link', 5,
-        function(widget, stdout)
-            if stdout:match ".*Not connected.*" then
-                widget:set_text("")
-                return
-            end
+    function(widget, stdout)
+        if stdout:match ".*Not connected.*" then
+            widget:set_text("")
+            return
+        end
 
-            ssid = stdout:match "SSID: %C*":sub(6, -2)
-            local signal = tonumber(stdout:match "signal: %p%d*":sub(8, -1))
+        ssid = stdout:match "SSID: %C*":sub(6, -2)
+        local signal = tonumber(stdout:match "signal: %p%d*":sub(8, -1))
 
-            local icon = ""
-            if signal >= -50 then
-                icon = ""
-            elseif signal >= -70 then
-                icon = ""
-            else
-                icon = ""
-            end
-            widget:set_text(icon .. ' ')
-        end)
+        local icon = ""
+        if signal >= -50 then
+            icon = ""
+        elseif signal >= -70 then
+            icon = ""
+        else
+            icon = ""
+        end
+        widget:set_text(icon .. ' ')
+    end)
 
 awful.tooltip {
     objects = { wifidisplay },
@@ -94,47 +94,47 @@ function dock.create(s)
     -- We need one layoutbox per screen.
     s.mylayoutbox = awful.widget.layoutbox(s)
     s.mylayoutbox:buttons(gears.table.join(
-                            awful.button({ }, 1, function () awful.layout.inc( 1) end),
-                            awful.button({ }, 3, function () awful.layout.inc(-1) end),
-                            awful.button({ }, 4, function () awful.layout.inc( 1) end),
-                            awful.button({ }, 5, function () awful.layout.inc(-1) end)))
+        awful.button({}, 1, function() awful.layout.inc(1) end),
+        awful.button({}, 3, function() awful.layout.inc(-1) end),
+        awful.button({}, 4, function() awful.layout.inc(1) end),
+        awful.button({}, 5, function() awful.layout.inc(-1) end)))
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
-        screen  = s,
-        filter  = function (t)
+        screen          = s,
+        filter          = function(t)
             return t.name ~= "scratchpads"
                 and awful.widget.taglist.filter.noempty(t)
         end,
-        buttons = taglist_buttons,
+        buttons         = taglist_buttons,
+        source          = function() tags:source() end,
         widget_template = {
             {
                 {
                     {
                         id     = "text_icon",
                         widget = wibox.widget.textbox,
-                        font = "Font Awesome 5 Pro Solid 10"
+                        font   = "Font Awesome 5 Pro Solid 10"
                     },
                     layout = wibox.layout.fixed.horizontal,
                 },
-                left  = 3,
-                right = 3,
+                left   = 3,
+                right  = 3,
                 widget = wibox.container.margin
             },
-            id     = "background_role",
-            widget = wibox.container.background,
+            id              = "background_role",
+            widget          = wibox.container.background,
             create_callback = function(self, t, index, objects)
-                self:get_children_by_id("text_icon")[1].text =
-                    (tags.taglist[t.name] or { icon = "" }).icon
+                self:get_children_by_id("text_icon")[1].text = (tags.taglist[t.name] or { icon = "" }).icon
             end,
         },
     }
 
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist {
-        screen  = s,
-        filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons,
-        style   = {
+        screen          = s,
+        filter          = awful.widget.tasklist.filter.currenttags,
+        buttons         = tasklist_buttons,
+        style           = {
             border_width = 1,
             border_color = "#77777700",
             shape        = gears.shape.rounded_bar,
@@ -146,11 +146,11 @@ function dock.create(s)
                 widget = wibox.container.margin,
                 left   = 10,
                 right  = 10,
-                top    =  2,
-                bottom =  2,
+                top    = 2,
+                bottom = 2,
                 {
-                    id = 'clienticon',
-                    widget = awful.widget.clienticon,
+                    id            = 'clienticon',
+                    widget        = awful.widget.clienticon,
                     forced_width  = 18,
                     forced_height = 20,
                 },
@@ -214,6 +214,5 @@ function dock.create(s)
         }
     }
 end
-
 
 return dock

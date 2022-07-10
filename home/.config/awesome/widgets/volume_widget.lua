@@ -73,7 +73,7 @@ local function popup_widget_template (audio)
                     font   = "Noto Sans 24"
                 },
                 {
-                    layout = wibox.layout.margin,
+                    layout = wibox.container.margin,
                     top = 10,
                     {
                         widget        = wibox.widget.progressbar,
