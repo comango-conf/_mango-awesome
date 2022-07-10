@@ -1,3 +1,7 @@
+package.path(";;" .. os.getenv("HOME") .. "/.local/share/lua/?.lua;" .. os.getenv("HOME") ..
+    "/.local/share/lua/?/init.lua")
+
+
 -- If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
@@ -28,22 +32,22 @@ local keybinds = require("keybinds")
 -- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
     naughty.notify({ preset = naughty.config.presets.critical,
-                     title = "Oops, there were errors during startup!",
-                     text = awesome.startup_errors })
+        title = "Oops, there were errors during startup!",
+        text = awesome.startup_errors })
 end
 
 
 -- Handle runtime errors after startup
 do
     local in_error = false
-    awesome.connect_signal("debug::error", function (err)
+    awesome.connect_signal("debug::error", function(err)
         -- Make sure we don't go into an endless error loop
         if in_error then return end
         in_error = true
 
         naughty.notify({ preset = naughty.config.presets.critical,
-                         title = "Oops, an error happened!",
-                         text = tostring(err) })
+            title = "Oops, an error happened!",
+            text = tostring(err) })
         in_error = false
     end)
 end
@@ -54,7 +58,7 @@ end
 if awesome.startup then
     -- awful.spawn.once({"comango", "hook", "wminit"})
 end
-  
+
 
 -- Menubar configuration
 menubar.utils.TERMINAL = TERMINAL -- Set the terminal for applications that require it
@@ -102,23 +106,23 @@ keybinds.set()
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
     -- All clients will match this rule.
-    { rule = { },
-      properties = { border_width = beautiful.border_width,
-                     border_color = beautiful.border_normal,
-                     focus = awful.client.focus.filter,
-                     raise = true,
-                     keys = keybinds.clientkeys(),
-                     buttons = keybinds.clientbuttons(),
-                     screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap+awful.placement.no_offscreen,
-     }
+    { rule = {},
+        properties = { border_width = beautiful.border_width,
+            border_color = beautiful.border_normal,
+            focus = awful.client.focus.filter,
+            raise = true,
+            keys = keybinds.clientkeys(),
+            buttons = keybinds.clientbuttons(),
+            screen = awful.screen.preferred,
+            placement = awful.placement.no_overlap + awful.placement.no_offscreen,
+        }
     },
 
     -- dialogs
     { rule_any = {
-            type = { "dialog" },
-            class = { "Gcr-prompter" }
-        },
+        type = { "dialog" },
+        class = { "Gcr-prompter" }
+    },
         properties = {
             placement = awful.placement.centered,
         }
@@ -126,34 +130,34 @@ awful.rules.rules = {
 
     -- Floating clients.
     { rule_any = {
-            class = {
-                "Blueman-manager",
-            },
-            role = {
-                "AlarmWindow",  -- Thunderbird's calendar.
-                "ConfigManager",  -- Thunderbird's about:config.
-                "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
-            }
+        class = {
+            "Blueman-manager",
         },
+        role = {
+            "AlarmWindow", -- Thunderbird's calendar.
+            "ConfigManager", -- Thunderbird's about:config.
+            "pop-up", -- e.g. Google Chrome's (detached) Developer Tools.
+        }
+    },
         properties = {
             floating = true,
         }
     },
 
     -- Add titlebars to normal clients and dialogsE
-    { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = false }
+    { rule_any = { type = { "normal", "dialog" }
+    }, properties = { titlebars_enabled = false }
     },
 
     { rule_any = {
-            class = {
-                "Vivaldi",
-                "Firefox",
-                "Microsoft-edge",
-                "Microsoft-edge-dev",
-                "Microsoft-edge-beta",
-            }
-        },
+        class = {
+            "Vivaldi",
+            "Firefox",
+            "Microsoft-edge",
+            "Microsoft-edge-dev",
+            "Microsoft-edge-beta",
+        }
+    },
         properties = {
             maximized = false,
             -- opacity = 0.2,
@@ -162,71 +166,71 @@ awful.rules.rules = {
 
 
     { rule_any = {
-            class = {
-                "Firefox",
-                "Microsoft-edge",
-                "Microsoft-edge-dev",
-                "Microsoft-edge-beta",
-            }
-        },
+        class = {
+            "Firefox",
+            "Microsoft-edge",
+            "Microsoft-edge-dev",
+            "Microsoft-edge-beta",
+        }
+    },
         properties = { tag = "www" }
     },
     { rule_any = {
-            class = {
-                "Code",
-                "jetbrains-webstorm",
-                "jetbrains-idea"
-            }
-        },
+        class = {
+            "Code",
+            "jetbrains-webstorm",
+            "jetbrains-idea"
+        }
+    },
         properties = { tag = "code" }
     },
     { rule_any = {
-            class = {
-                "Steam"
-            }
-        },
+        class = {
+            "Steam"
+        }
+    },
         properties = { tag = "misc" }
     },
     { rule_any = {
-            class = {
-                "Spotify"
-            }
-        },
+        class = {
+            "Spotify"
+        }
+    },
         properties = { tag = "music" }
     },
     { rule_any = {
-            class = {
-                "discord",
-                "Signal",
-                "Element",
-                "whatsapp-desktop"
-            },
+        class = {
+            "discord",
+            "Signal",
+            "Element",
+            "whatsapp-desktop"
         },
+    },
         properties = { tag = "chat" }
     },
 
     { rule_any = {
-            class = {
-                "Thunderbird"
-            }
-        },
+        class = {
+            "Thunderbird"
+        }
+    },
         properties = { tag = "mail" }
     },
 
     { rule_any = {
-            class = {
-                "zoom"
-            }
-        },
+        class = {
+            "zoom"
+        }
+    },
         properties = { tag = "zoom" }
     },
 
-    -- games 
+    -- games
     { rule_any = {
-            name = {
-                "Warframe"
-            }
-        },
+        name = {
+            "Warframe"
+        }
+    },
         properties = {
             floating = true,
             tag = "misc",
@@ -238,10 +242,10 @@ awful.rules.rules = {
 
     -- scratchpads
     { rule_any = {
-            class = {
-                "scratch"
-            }
-        },
+        class = {
+            "scratch"
+        }
+    },
         properties = {
             floating = true,
             ontop = true,
@@ -255,10 +259,10 @@ awful.rules.rules = {
         }
     },
     { rule_any = {
-            class = {
-                "Pavucontrol"
-            }
-        },
+        class = {
+            "Pavucontrol"
+        }
+    },
         properties = {
             floating = true,
             ontop = true,
@@ -270,10 +274,10 @@ awful.rules.rules = {
         }
     },
     { rule_any = {
-            class = {
-                "Bitwarden"
-            }
-        },
+        class = {
+            "Bitwarden"
+        }
+    },
         properties = {
             floating = true,
             ontop = true,
@@ -289,34 +293,34 @@ awful.rules.rules = {
 
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
-client.connect_signal("manage", function (c)
+client.connect_signal("manage", function(c)
 
 
-    c:connect_signal("property::class", function(c) 
+    c:connect_signal("property::class", function(c)
         if c.class == "Spotify" then
             c:move_to_tag("music")
         end
     end)
 
     if not c.fullscreen then
-        c.shape = function(cr,w,h) gears.shape.rounded_rect(cr,w,h,5) end
+        c.shape = function(cr, w, h) gears.shape.rounded_rect(cr, w, h, 5) end
     end
 
     c:connect_signal("property::fullscreen", function(c)
         if c.fullscreen then
             c.shape = nil
         else
-            c.shape = function(cr,w,h) gears.shape.rounded_rect(cr,w,h,5) end
+            c.shape = function(cr, w, h) gears.shape.rounded_rect(cr, w, h, 5) end
         end
     end)
 
-     -- Set the windows at the slave,
+    -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
     -- if not awesome.startup then awful.client.setslave(c) end
 
     if awesome.startup
-      and not c.size_hints.user_position
-      and not c.size_hints.program_position then
+        and not c.size_hints.user_position
+        and not c.size_hints.program_position then
         -- Prevent clients from being unreachable after screen count changes.
         awful.placement.no_offscreen(c)
     end
@@ -326,17 +330,17 @@ end)
 client.connect_signal("request::titlebars", function(c)
     -- buttons for the titlebar
     local buttons = gears.table.join(
-        awful.button({ }, 1, function()
-            c:emit_signal("request::activate", "titlebar", {raise = true})
+        awful.button({}, 1, function()
+            c:emit_signal("request::activate", "titlebar", { raise = true })
             awful.mouse.client.move(c)
         end),
-        awful.button({ }, 3, function()
-            c:emit_signal("request::activate", "titlebar", {raise = true})
+        awful.button({}, 3, function()
+            c:emit_signal("request::activate", "titlebar", { raise = true })
             awful.mouse.client.resize(c)
         end)
     )
 
-    awful.titlebar(c) : setup {
+    awful.titlebar(c):setup {
         { -- Left
             awful.titlebar.widget.iconwidget(c),
             buttons = buttons,
@@ -351,11 +355,11 @@ client.connect_signal("request::titlebars", function(c)
             layout  = wibox.layout.flex.horizontal
         },
         { -- Right
-            awful.titlebar.widget.floatingbutton (c),
+            awful.titlebar.widget.floatingbutton(c),
             awful.titlebar.widget.maximizedbutton(c),
-            awful.titlebar.widget.stickybutton   (c),
-            awful.titlebar.widget.ontopbutton    (c),
-            awful.titlebar.widget.closebutton    (c),
+            awful.titlebar.widget.stickybutton(c),
+            awful.titlebar.widget.ontopbutton(c),
+            awful.titlebar.widget.closebutton(c),
             layout = wibox.layout.fixed.horizontal()
         },
         layout = wibox.layout.align.horizontal
@@ -364,7 +368,7 @@ end)
 
 -- Enable sloppy focus, so that focus follows mouse.
 client.connect_signal("mouse::enter", function(c)
-    c:emit_signal("request::activate", "mouse_enter", {raise = false})
+    c:emit_signal("request::activate", "mouse_enter", { raise = false })
 end)
 
 client.connect_signal("focus", function(c)
