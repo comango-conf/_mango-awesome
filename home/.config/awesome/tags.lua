@@ -9,6 +9,7 @@ awful.layout.append_default_layouts({
     layouts.tile,
     layouts.minmax,
     layouts.accordion,
+    awful.layout.suit.floating
 })
 
 local tags = {}
