@@ -1,6 +1,6 @@
 local naughty = require("naughty")
 local awful = require("awful")
-local misc = require("wslua.misc")
+-- local misc = require("wslua.misc")
 
 local accordion = {
     name = "accordion",
@@ -10,7 +10,7 @@ local state = {}
 
 
 function accordion.arrange (p)
-    misc.print(p.clients[1].opacity)
+    -- misc.print(p.clients[1].opacity)
     -- p.clients[1].opacity = 0
 
     local area = p.workarea

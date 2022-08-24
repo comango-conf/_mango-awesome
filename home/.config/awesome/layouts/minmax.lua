@@ -1,4 +1,4 @@
-local misc = require("wslua.misc")
+-- local misc = require("wslua.misc")
 local naughty = require("naughty")
 
 ---------------------------------------------------------------------------

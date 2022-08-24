@@ -1,7 +1,7 @@
 local awful = require("awful")
 local naughty = require("naughty")
 local layouts = require("layouts")
-local misc = require("wslua.misc")
+-- local misc = require("wslua.misc")
 local util = require("util")
 
 
@@ -71,8 +71,8 @@ function tags.create(s)
     end)
 
 
-    misc.print(taglist)
-    misc.print(awful.widget.taglist.source.for_screen(s))
+    -- misc.print(taglist)
+    -- misc.print(awful.widget.taglist.source.for_screen(s))
 end
 
 function tags.toggle(index)
