@@ -108,7 +108,7 @@ local timer = gears.timer({
 
 awesome.connect_signal("volume::change", function (new, _)
 
-    tooltip.text = new.volume
+    -- tooltip.text = new.volume
 
     -- volume_widget:set_text(select_icon(new))
 
