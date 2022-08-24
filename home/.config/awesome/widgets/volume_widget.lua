@@ -108,9 +108,9 @@ local timer = gears.timer({
 
 awesome.connect_signal("volume::change", function (new, _)
 
-    -- tooltip.text = new.volume
+    tooltip.text = new.volume
 
-    -- volume_widget:set_text(select_icon(new))
+    volume_widget:set_text(select_icon(new))
 
     if curr ~= nil then
         pop.widget = wibox.widget(popup_widget_template(new))
