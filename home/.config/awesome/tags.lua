@@ -25,34 +25,68 @@ function tags.add(name, args)
     taglist[name] = args
 end
 
-local function default_tag(name, s, icon, selected)
-    local instance = awful.tag.add(name, {
-        layout             = awful.layout.layouts[1],
-        master_fill_policy = "expand",
-        gap_single_client  = true,
-        gap                = 5,
-        screen             = s,
-        selected           = selected or false,
+local function default_tag(tag)
+    local instance = awful.tag.add(tag.name, {
+        layout             = tag.layout             or awful.layout.layouts[1],
+        master_fill_policy = tag.master_fill_policy or "expand",
+        gap_single_client  = tag.gap_single_client  or true,
+        gap                = tag.gap                or 5,
+        selected           = tag.selected           or false,
+        screen             = tag.s,
     })
 
-    indextable[i] = name
-    tags.add(name, {
-        index = i,
-        icon = icon,
+    indextable[i] = tag.name
+    tags.add(tag.name, {
+        index    = i,
+        icon     = tag.icon,
         instance = instance,
     })
     i = i + 1
 end
 
 function tags.create(s)
-    default_tag("www", s, "", true)
-    default_tag("code", s, "")
-    default_tag("term", s, "")
-    default_tag("misc", s, "")
-    default_tag("music", s, "")
-    default_tag("chat", s, "")
-    default_tag("mail", s, "")
-    default_tag("zoom", s, "")
+    default_tag {
+        name     = "www",
+        icon     = "",
+        screen   = s,
+        selected = true,
+    }
+    default_tag {
+        name     = "code",
+        icon     = "",
+        screen   = s,
+    }
+    default_tag {
+        name     = "term",
+        icon     = "",
+        screen   = s,
+    }
+    default_tag {
+        name     = "misc",
+        icon     = "",
+        screen   = s,
+        layout   = awful.layout.layouts[4],
+    }
+    default_tag {
+        name     = "music",
+        icon     = "",
+        screen   = s,
+    }
+    default_tag {
+        name     = "chat",
+        icon     = "",
+        screen   = s,
+    }
+    default_tag {
+        name     = "mail",
+        icon     = "",
+        screen   = s,
+    }
+    default_tag {
+        name     = "zoom",
+        icon     = "",
+        screen   = s,
+    }
     -- default_tag("scratchpads", s)
 
     local scrpd = awful.tag.add("scratchpads", {
