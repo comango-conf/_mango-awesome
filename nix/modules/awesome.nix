@@ -25,9 +25,11 @@
 
 
   environment.systemPackages = with pkgs; [
-    pavucontrol
-    xclip
+    acpilight
+    i3lock-color
     imagemagick
     pamixer
+    pavucontrol
+    xclip
   ];
 }
