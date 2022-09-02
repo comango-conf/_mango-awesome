@@ -51,7 +51,6 @@ local function popup_widget_template (audio)
     return {
         layout = wibox.container.background,
         clip   = true,
-        shape  = gears.shape.rounded_bar,
         forced_width = 400,
         forced_height = 300,
         {
