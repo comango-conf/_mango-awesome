@@ -76,6 +76,7 @@ function tags.create(s)
         name     = "chat",
         icon     = "",
         screen   = s,
+        layout   = awful.layout.layouts[2],
     }
     default_tag {
         name     = "mail",
