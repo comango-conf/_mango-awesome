@@ -13,34 +13,51 @@ local theme_path = "/home/hannah/.config/awesome/theme/"
 
 local theme = {}
 
+local colors = {}
+colors.background = "#<#{BACKGROUND}#>"
+colors.background_alt = "#<#{BACKGROUND_ALT}#>"
+colors.foreground = "#<#{FOREGROUND}#>"
+colors.foreground_alt = "#<#{FOREGROUND_ALT}#>"
+colors.primary = "#<#{PRIMARY}#>"
+colors.secondary = "#<#{SECONDARY}#>"
+colors.alert = "#<#{ALERT}#>"
+theme.colors = colors
+
+theme.bar_opacity = "<#{BAR_OPACITY}#>"
+
 theme.font          = "sans 10"
 
-theme.bg_normal     = "#181a2099"
-theme.bg_focus      = "#4a4a4a99"
-theme.bg_urgent     = "#ff000099"
-theme.bg_minimize   = "#444444"
+theme.bg_normal     = colors.background .. theme.bar_opacity
+theme.bg_focus      = colors.foreground_alt .. theme.bar_opacity
+theme.bg_urgent     = colors.alert .. "99"
+theme.bg_minimize   = colors.foreground .. "99"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
+theme.fg_normal     = colors.foreground_alt
+theme.fg_focus      = colors.foreground
+theme.fg_urgent     = colors.alert
+theme.fg_minimize   = colors.background
 
 theme.useless_gap   = dpi(0)
 theme.border_width  = dpi(1)
-theme.border_normal = "#000000"
-theme.border_focus  = "#535d6c"
-theme.border_marked = "#91231c"
+theme.border_normal = colors.background
+theme.border_focus  = colors.primary
+theme.border_marked = colors.alert
 
 
-theme.radialprogressbar_border_color = "#0000"
-theme.radialprogressbar_color = theme.border_focus
-theme.progressbar_fg = theme.fg_normal
+theme.radialprogressbar_border_color = colors.background .. "99"
+theme.radialprogressbar_color = colors.foreground .. "99"
+theme.progressbar_fg = colors.foreground
 theme.progressbar_bg = "#0000"
 
 theme.tasklist_bg_normal = "#0000"
-theme.tasklist_bg_focus  = "#181a2099"
-theme.taglist_bg_focus   = "#181a2099"
+theme.tasklist_bg_focus  = colors.foreground .. "99"
+theme.tasklist_bg_minimize  = colors.foreground_alt .. "99"
+theme.taglist_bg_focus   = colors.foreground_alt .. "99"
+
+theme.tooltip_fg_color = colors.foreground
+theme.tooltip_bg_color = colors.background
+theme.tooltip_opacity = 1
 
 -- There are other variable sets
 -- overriding the default one when

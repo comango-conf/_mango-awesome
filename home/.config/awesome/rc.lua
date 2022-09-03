@@ -27,6 +27,7 @@ local tags = require("tags")
 local dock = require("dock")
 local keybinds = require("keybinds")
 local titlebar = require("titlebar")
+local theme = require("theme")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to

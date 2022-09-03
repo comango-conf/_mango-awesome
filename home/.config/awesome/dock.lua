@@ -102,8 +102,8 @@ function dock.create(s)
     s.mytaglist = awful.widget.taglist {
         screen          = s,
         filter          = function(t)
-            return t.name ~= "scratchpads"
-                and awful.widget.taglist.filter.noempty(t)
+            return awful.widget.taglist.filter.noempty(t)
+                and t.name ~= "scratchpads"
         end,
         buttons         = taglist_buttons,
         -- source          = tags.source,
