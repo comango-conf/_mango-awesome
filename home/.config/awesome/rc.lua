@@ -214,7 +214,9 @@ awful.rules.rules = {
 
     { rule_any = {
         class = {
-            "Thunderbird"
+            "Thunderbird",
+            "thunderbird",
+            "Mail"
         }
     },
         properties = { tag = "mail" }
