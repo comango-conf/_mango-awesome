@@ -13,6 +13,7 @@
         rev = "05a405b38bbcb8fa3b344d45d94d4f56b83c74df";
         sha256 = "OBCUbkWEcWHokYNjfz4aRRkxr9rwGNkaKnovzoliFwU=";
       };
+      patches = [];
     });
   })];
 
