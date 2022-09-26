@@ -196,7 +196,8 @@ awful.rules.rules = {
     },
     { rule_any = {
         class = {
-            "Spotify"
+            "Spotify",
+            "spotify",
         }
     },
         properties = { tag = "music" }
@@ -299,8 +300,9 @@ awful.rules.rules = {
 client.connect_signal("manage", function(c)
 
 
-    c:connect_signal("property::class", function(c)
-        if c.class == "Spotify" then
+    c:connect_signal("property::class", function()
+        naughty.notify({text = 'class' .. c.class})
+        if c.class:lower() == "spotify" then
             c:move_to_tag("music")
         end
     end)
