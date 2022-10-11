@@ -159,6 +159,7 @@ awful.rules.rules = {
             "Microsoft-edge",
             "Microsoft-edge-dev",
             "Microsoft-edge-beta",
+            "Chromium"
         }
     },
         properties = {
@@ -174,6 +175,7 @@ awful.rules.rules = {
             "Microsoft-edge",
             "Microsoft-edge-dev",
             "Microsoft-edge-beta",
+            "Chromium"
         }
     },
         properties = { tag = "www" }
