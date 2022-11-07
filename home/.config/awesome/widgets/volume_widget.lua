@@ -45,6 +45,8 @@ local function select_icon (audio)
     else
         return ""
     end
+
+    return ""
 end
 
 local function popup_widget_template (audio)
