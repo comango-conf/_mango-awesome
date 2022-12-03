@@ -309,14 +309,14 @@ client.connect_signal("manage", function(c)
     end)
 
     if not c.fullscreen then
-        c.shape = function(cr, w, h) gears.shape.rounded_rect(cr, w, h, 5) end
+        -- c.shape = function(cr, w, h) gears.shape.rounded_rect(cr, w, h, 5) end
     end
 
     c:connect_signal("property::fullscreen", function(c)
         if c.fullscreen then
             c.shape = nil
         else
-            c.shape = function(cr, w, h) gears.shape.rounded_rect(cr, w, h, 5) end
+            -- c.shape = function(cr, w, h) gears.shape.rounded_rect(cr, w, h, 5) end
         end
     end)
 
